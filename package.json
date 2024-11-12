@@ -31,8 +31,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "dev": "vitest dev",
-    "dev:demo": "vite",
+    "dev": "pnpm dev:vite",
     "build": "unbuild",
     "build:demo": "vite build",
     "lint": "eslint --flag unstable_ts_config .",
@@ -41,12 +40,10 @@
     "test:types": "tsc --build tsconfig.json",
     "test:coverage": "vitest run --coverage",
     "test:unit": "vitest run",
-    "dev:nuxt": "nuxi dev playgrounds",
+    "dev:nuxt": "pnpm --filter playgrounds-nuxt dev",
+    "dev:vite": "pnpm --filter playgrounds-vite dev",
     "build:nuxt": "nuxi build playgrounds",
     "start:nuxt": "nuxi preview playgrounds"
-  },
-  "peerDependencies": {
-    "@nuxt/kit": "npm:@nuxt/kit-edge@latest"
   },
   "dependencies": {
     "nuxt": "^3.14.159"
@@ -54,9 +51,6 @@
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
     "@types/fs-extra": "^11.0.4",
-    "@typescript-eslint/eslint-plugin": "^8.14.0",
-    "@vue/eslint-config-prettier": "^10.1.0",
-    "@vue/test-utils": "^2.4.6",
     "c8": "^10.1.2",
     "eslint": "^9.14.0",
     "lint-staged": "^15.2.10",
