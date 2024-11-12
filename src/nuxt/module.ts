@@ -12,8 +12,8 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: CONFIG_KEY,
     compatibility: {
       nuxt: '>=3.0.0',
-      bridge: true
-    }
+      bridge: true,
+    },
   },
   defaults: DEFAULTS,
   setup(options, nuxt) {
@@ -22,7 +22,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Add auto imports
     addAutoImport([{ name: 'useToggle', as: 'useToggle', from: resolveRuntimeModule('../../index') }])
-  }
+  },
 })
 
 interface ModulePublicRuntimeConfig {}

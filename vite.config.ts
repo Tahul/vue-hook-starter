@@ -5,6 +5,6 @@ export default defineConfig({
   root: 'demo/',
   plugins: [vue()],
   test: {
-    include: ['**/*.spec.ts']
-  }
+    include: ['**/*.spec.ts'],
+  },
 })

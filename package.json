@@ -1,20 +1,20 @@
 {
   "name": "vue-composable-starter",
+  "type": "module",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.12.3",
   "description": "🪝 Minimalist starting point for your next Vue Composable",
+  "author": "Yaël GUILLOUX <yael.guilloux@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Tahul/vue-composable-starter#readme",
   "repository": "https://github.com/Tahul/vue-composable-starter",
   "bugs": {
     "url": "https://github.com/Tahul/vue-composable-starter/issues"
   },
-  "homepage": "https://github.com/Tahul/vue-composable-starter#readme",
   "keywords": [
     "vue",
     "composable"
   ],
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.mjs",
     "./nuxt": {
@@ -22,57 +22,52 @@
       "require": "./dist/nuxt.cjs"
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/**/*"
+  ],
   "scripts": {
     "dev": "vitest dev",
     "dev:demo": "vite",
     "build": "unbuild",
     "build:demo": "vite build",
-    "lint": "eslint \"**/*.{vue,ts,js}\"",
-    "lint:fix": "pnpm run lint --write",
+    "lint": "eslint --flag unstable_ts_config .",
+    "lint:fix": "pnpm run lint --fix",
     "test": "pnpm test:types && pnpm test:unit && pnpm test:coverage",
     "test:types": "tsc --build tsconfig.json",
     "test:coverage": "vitest run --coverage",
     "test:unit": "vitest run",
-    "dev:nuxt": "nuxi dev playground",
-    "build:nuxt": "nuxi build playground",
-    "start:nuxt": "nuxi preview playground"
+    "dev:nuxt": "nuxi dev playgrounds",
+    "build:nuxt": "nuxi build playgrounds",
+    "start:nuxt": "nuxi preview playgrounds"
   },
-  "files": [
-    "dist/**/*",
-    "LICENSE",
-    "README.md"
-  ],
   "peerDependencies": {
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest"
   },
+  "dependencies": {
+    "nuxt": "^3.14.159"
+  },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.19.2",
-    "@types/fs-extra": "^9.0.13",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@vue/eslint-config-prettier": "^7.0.0",
-    "@vue/test-utils": "^2.0.0-rc.17",
-    "c8": "^7.11.0",
-    "eslint": "^8.12.0",
-    "lint-staged": "^12.3.7",
-    "nuxt3": "latest",
+    "@antfu/eslint-config": "^3.8.0",
+    "@types/fs-extra": "^11.0.4",
+    "@typescript-eslint/eslint-plugin": "^8.14.0",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "@vue/test-utils": "^2.4.6",
+    "c8": "^10.1.2",
+    "eslint": "^9.14.0",
+    "lint-staged": "^15.2.10",
     "pascalcase": "^2.0.0",
-    "prettier": "^2.6.1",
-    "typescript": "^4.6.3",
-    "unbuild": "^0.7.2",
-    "vitest": "^0.8.2",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3",
+    "unbuild": "^2.0.0",
+    "vitest": "^2.1.4",
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
-  },
-  "author": "Yaël GUILLOUX <yael.guilloux@gmail.com>",
-  "license": "MIT"
+  }
 }

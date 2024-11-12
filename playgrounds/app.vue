@@ -4,7 +4,7 @@ const [toggleable, toggle] = useToggle()
 
 <template>
   <div>
-    <input type="checkbox" :value="toggleable ? 'checked' : 'unchecked'" @change="toggle" />
+    <input type="checkbox" :value="toggleable ? 'checked' : 'unchecked'" @change="toggle">
     Current value is: {{ toggleable }}
   </div>
 </template>
