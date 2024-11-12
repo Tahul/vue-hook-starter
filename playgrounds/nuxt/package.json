@@ -1,7 +1,7 @@
 {
   "name": "playgrounds-nuxt",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
