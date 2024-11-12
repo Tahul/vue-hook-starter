@@ -1,6 +1,13 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <div @click="toggle">
+      {{toggleable}}
+    </div>
   </div>
 </template>
+
+
+<script setup>
+const [toggleable, toggle] = useToggle()
+</script>

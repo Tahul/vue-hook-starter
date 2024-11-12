@@ -32,8 +32,8 @@
   ],
   "scripts": {
     "dev": "pnpm dev:vite",
-    "build": "unbuild",
-    "build:demo": "vite build",
+    "build": "unbuild && pnpm build:nuxt",
+    "prepare": "pnpm prepare:nuxt",
     "lint": "eslint --flag unstable_ts_config .",
     "lint:fix": "pnpm run lint --fix",
     "test": "pnpm test:types && pnpm test:unit && pnpm test:coverage",
@@ -43,7 +43,8 @@
     "dev:nuxt": "pnpm --filter playgrounds-nuxt dev",
     "dev:vite": "pnpm --filter playgrounds-vite dev",
     "build:nuxt": "nuxi build playgrounds",
-    "start:nuxt": "nuxi preview playgrounds"
+    "start:nuxt": "nuxi preview playgrounds",
+    "prepare:nuxt": "pnpm --filter playgrounds-nuxt prepare:nuxt"
   },
   "dependencies": {
     "nuxt": "^3.14.159"
