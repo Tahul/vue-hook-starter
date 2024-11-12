@@ -1,7 +1,7 @@
 import { defineNuxtPlugin } from '#imports'
 
 export default defineNuxtPlugin(
-  (nuxtApp) => {
+  (_nuxtApp) => {
     // example
     // const config = useRuntimeConfig()
     // nuxtApp.vueApp.use(MotionPlugin, config.public.motion)

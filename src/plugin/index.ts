@@ -4,7 +4,7 @@ import { resolve } from 'node:path'
 import { addImportsDir } from '@nuxt/kit'
 
 export const VueComposableStarterPlugin = {
-  install(app: App, options?: VueComposableStarterPluginOptions) {
+  install(_app: App, _options?: VueComposableStarterPluginOptions) {
     // app.provide(EXAMPLE, options?.example)
 
     // Add auto imports
