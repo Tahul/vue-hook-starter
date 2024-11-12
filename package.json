@@ -15,24 +15,32 @@
     "vue",
     "composable"
   ],
+  "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
     "./nuxt": {
-      "import": "./dist/nuxt.mjs",
-      "require": "./dist/nuxt.cjs"
+      "import": "./dist/nuxt/module.mjs",
+      "require": "./dist/nuxt/module.cjs"
     }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": [
-    "LICENSE",
-    "README.md",
-    "dist/**/*"
-  ],
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
   "scripts": {
     "dev": "pnpm dev:vite",
-    "build": "unbuild && pnpm build:nuxt",
+    "build": "unbuild && pnpm build:nuxt-module",
+    "build:nuxt-module": "nuxt-module-build build ./src/nuxt --outDir ../../dist/nuxt",
     "prepare": "pnpm prepare:nuxt",
     "lint": "eslint --flag unstable_ts_config .",
     "lint:fix": "pnpm run lint --fix",
@@ -45,23 +53,21 @@
     "start:nuxt": "nuxi preview playgrounds",
     "prepare:nuxt": "pnpm --filter playgrounds-nuxt prepare:nuxt"
   },
-  "dependencies": {
-    "nuxt": "^3.14.159"
+  "peerDependencies": {
+    "vue": ">=3.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
+    "@nuxt/kit": "^3.14.159",
+    "@nuxt/module-builder": "^0.8.4",
     "@types/fs-extra": "^11.0.4",
     "@vitest/coverage-v8": "^2.1.4",
-    "c8": "^10.1.2",
     "eslint": "^9.14.0",
     "happy-dom": "^15.11.3",
     "lint-staged": "^15.2.10",
-    "pascalcase": "^2.0.0",
-    "prettier": "^3.3.3",
     "typescript": "^5.6.3",
     "unbuild": "^2.0.0",
-    "vitest": "^2.1.4",
-    "yorkie": "^2.0.0"
+    "vitest": "^2.1.4"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
