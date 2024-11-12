@@ -1,7 +1,7 @@
 import type { App } from 'vue'
-import { VueComposableStarterPluginOptions } from '../types'
-import { addImportsDir } from '@nuxt/kit'
+import type { VueComposableStarterPluginOptions } from '../types'
 import { resolve } from 'node:path'
+import { addImportsDir } from '@nuxt/kit'
 
 export const VueComposableStarterPlugin = {
   install(app: App, options?: VueComposableStarterPluginOptions) {

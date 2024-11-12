@@ -2,8 +2,8 @@ import { resolve } from 'node:path'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  features:{
-    devLogs: false
+  features: {
+    devLogs: false,
   },
   alias: {
     'vue-composable-starter': resolve(__dirname, '../../src/index.ts'),

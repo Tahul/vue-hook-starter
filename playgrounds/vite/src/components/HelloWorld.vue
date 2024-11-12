@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useToggle } from 'vue-composable-starter'
 
-const [toggleable, toggle] = useToggle()
-
 defineProps<{ msg: string }>()
+
+const [toggleable, toggle] = useToggle()
 </script>
 
 <template>
