@@ -1,12 +1,5 @@
-import { ref } from 'vue'
+// Components
+export { default as Toggle } from './components/Toggle.vue'
 
-/**
- * A simple toggler.
- */
-export function useToggle(defaultValue = false) {
-  const toggleable = ref(defaultValue)
-
-  const toggle = () => (toggleable.value = !toggleable.value)
-
-  return [toggleable, toggle] as const
-}
+// Composables
+export { useToggle } from './useToggle'

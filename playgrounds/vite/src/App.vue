@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { useToggle, Toggle } from 'vue-composable-starter'
+
+const [toggleable, toggle] = useToggle()
+
 </script>
 
 <template>
   <div>
-    <HelloWorld msg="Hello Vue 3 + Vite" />
+    as component:
+    <Toggle />
+    plain:
+    <button @click="toggle">
+      Toggle: {{ toggleable }}
+    </button>
   </div>
 </template>

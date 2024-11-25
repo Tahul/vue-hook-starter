@@ -1,4 +1,5 @@
 <script setup>
+import { useToggle } from 'vue-composable-starter'
 const [value, toggle] = useToggle()
 </script>
 

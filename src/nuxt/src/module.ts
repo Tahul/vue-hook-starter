@@ -1,8 +1,7 @@
 import type { NuxtModule } from '@nuxt/schema'
 import { addComponentsDir, addImportsDir, addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
 
-export interface ModuleOptions {
-}
+export interface ModuleOptions {}
 
 const DEFAULTS: ModuleOptions = {}
 
@@ -14,11 +13,8 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: CONFIG_KEY,
   },
   defaults: DEFAULTS,
-  setup(options, nuxt) {
+  async setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
-
-    // Push options and merge to runtimeConfig
-    // nuxt.options.runtimeConfig.public.motion = defu(nuxt.options.runtimeConfig.public.motion || {}, options)
 
     // Add templates (options and directives)
     addPlugin(resolve('./runtime/templates/plugin'))
@@ -26,7 +22,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Add auto imports
     addImportsDir(resolve('./runtime/composables'))
 
-    addComponentsDir({ path: resolve('../../components') })
+    await addComponentsDir({ path: resolve('../../components') })
 
     // Transpile necessary packages
     if (!nuxt.options.build.transpile)
