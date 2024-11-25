@@ -1,5 +1,5 @@
 import type { NuxtModule } from '@nuxt/schema'
-import { addImportsDir, addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
+import { addComponentsDir, addImportsDir, addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
 
 export interface ModuleOptions {
 }
@@ -26,12 +26,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Add auto imports
     addImportsDir(resolve('./runtime/composables'))
 
-    // Add components
-    // addComponent({
-    //   name: 'Motion',
-    //   export: 'MotionComponent',
-    //   filePath: '@vueuse/motion'
-    // })
+    addComponentsDir({ path: resolve('../../components') })
 
     // Transpile necessary packages
     if (!nuxt.options.build.transpile)

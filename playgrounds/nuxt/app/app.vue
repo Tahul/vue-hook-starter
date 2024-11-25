@@ -5,8 +5,11 @@ const [toggleable, toggle] = useToggle()
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <div @click="toggle">
-      {{ toggleable }}
-    </div>
+    as component:
+    <Toggle />
+    plain:
+    <button @click="toggle">
+      Toggle: {{ toggleable }}
+    </button>
   </div>
 </template>
