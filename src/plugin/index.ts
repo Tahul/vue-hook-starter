@@ -2,7 +2,7 @@ import type { App } from 'vue'
 import type { VueComposableStarterPluginOptions } from '../types'
 
 export const VueComposableStarterPlugin = {
-  install(app: App, _options?: VueComposableStarterPluginOptions) {
+  install(_app: App, _options?: VueComposableStarterPluginOptions) {
     // app.provide(EXAMPLE, options?.example)
 
     // app.component('Toggle', ToggleComponent)

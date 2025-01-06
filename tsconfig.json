@@ -1,3 +1,38 @@
 {
-  "extends": "./playgrounds/nuxt/tsconfig.json"
+  "compilerOptions": {
+
+    "target": "esnext",
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+
+    "paths": {
+      "vue-composable-starter": ["./src/index.ts"]
+    },
+    "resolveJsonModule": true,
+    "types": [
+      "node",
+      "vite/client",
+      "@vitest/browser/providers/playwright"
+    ],
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noEmit": true,
+    "outDir": "dist",
+    "removeComments": false,
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "skipLibCheck": true
+  },
+  "exclude": ["dist", "node_modules"]
 }

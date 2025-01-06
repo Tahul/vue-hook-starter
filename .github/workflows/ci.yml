@@ -1,0 +1,32 @@
+name: Run tests
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Install dependencies
+        run: pnpm install
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+      - name: Run tests
+        run: pnpm vitest run
+      - name: Run type checks
+        run: pnpm vue-tsc --noEmit
+      - name: Run linting
+        run: pnpm lint

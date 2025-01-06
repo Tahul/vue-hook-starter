@@ -1,6 +1,7 @@
 import { resolve } from 'node:path'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// @ts-expect-error dont know
 export default defineNuxtConfig({
   features: {
     devLogs: false,

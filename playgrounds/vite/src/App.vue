@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { useToggle, Toggle } from 'vue-composable-starter'
+import { Toggle, useToggle } from 'vue-composable-starter'
 
 const [toggleable, toggle] = useToggle()
-
 </script>
 
 <template>
