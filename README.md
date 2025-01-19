@@ -7,8 +7,9 @@ A minimalist starting point for your next Vue 3 composable.
 - 🤹 Testing using [**Vitest**](https://vitest.dev)
 - ☑️ Linting using [**@antfu/eslint-config**](https://github.com/antfu/eslint-config)
 - 🌐 [**Nuxt 3**](https://nuxtjs.org) as a playground
-- 📸 Demo ready to be written and deployed using [**Vite**](https://vitejs.dev)
+- 📸 Playgrounds using [**Vite**](https://vitejs.dev) and [Nuxt](https://nuxt.com/)
 - 🚚 Built using [**unbuild**](https://github.com/unjs/unbuild)
+- 📚 Documentation using [**Vitepress**](https://vitepress.dev)
 
 > Edit [variables](#to-do), implement, test, publish 🏎
 
@@ -20,28 +21,28 @@ Build the package:
 pnpm build
 ```
 
-Build with watcher:
+Run the development environment (vite):
 
 ```bash
 pnpm dev
 ```
 
-Run the demo:
+Run the docs:
 
 ```bash
-pnpm dev:demo
+pnpm dev:docs
 ```
 
-Build the demo:
+Build the docs:
 
 ```bash
-pnpm build:demo
+pnpm build:docs
 ```
 
 Lint the package:
 
 ```bash
-pnpm link
+pnpm lint
 ```
 
 Run test suite:
@@ -50,25 +51,19 @@ Run test suite:
 pnpm test
 ```
 
-Test typings:
-
-```bash
-pnpm test:types
-```
-
-Start Nuxt 3 env:
+Start Nuxt dev environment:
 
 ```bash
 pnpm dev:nuxt
 ```
 
-Build Nuxt 3 env:
+Build Nuxt environment:
 
 ```bash
 pnpm build:nuxt
 ```
 
-Preview Nuxt 3 env:
+Preview Nuxt environment:
 
 ```bash
 pnpm start:nuxt
@@ -97,11 +92,12 @@ The general Nuxt environment does not differ from a classic Vue app.
 ## To-Do
 
 - [ ] Edit package.json `name`, `description`, `repository` and `author` keys.
+- [ ] Rename all `vue-composable-starter` with your package name.
+- [ ] Rename `VueComposableStarterPluginOptions` with your plugin options.
 - [ ] Remove .vscode folder (containing recommended extensions)
 - [ ] Edit README.md.
 - [ ] Implement my composable.
 - [ ] Test my composable.
-- [ ] Make a demo of my composable in the `demo` folder.
 - [ ] Document my composable.
 - [ ] Publish on [NPM](npmjs.com), [awesome-vue](https://github.com/vuejs/awesome-vue), [vue-forum](https://forum.vuejs.org/), [Vue Discord](https://fr.vuejs.org/v2/guide/join.html).
 

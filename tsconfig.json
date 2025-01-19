@@ -1,45 +1,38 @@
 {
-  "include": [
-    "vite.config.ts",
-    "env.d.ts",
-    "src/**/*.ts",
-    "tests/**/*.ts",
-    "demo/**/*.ts",
-    "demo/**/*.d.ts",
-    "demo/**/*.tsx",
-    "demo/**/*.vue",
-    "playground/**/*.ts",
-    "playground/**/*.d.ts",
-    "playground/**/*.tsx",
-    "playground/**/*.vue",
-  ],
-  "exclude": ["dist", "node_modules"],
   "compilerOptions": {
-    "lib": ["esnext", "dom"],
-    "types": ["node", "vite/client"],
-    "baseUrl": ".",
-    "rootDir": ".",
-    "outDir": "dist",
-    "sourceMap": false,
-    "noEmit": true,
 
     "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "strict": true,
-    "isolatedModules": false,
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
 
     "experimentalDecorators": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+
+    "paths": {
+      "vue-composable-starter": ["./src/index.ts"]
+    },
     "resolveJsonModule": true,
-    "esModuleInterop": true,
+    "types": [
+      "node",
+      "vite/client",
+      "@vitest/browser/providers/playwright"
+    ],
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noEmit": true,
+    "outDir": "dist",
     "removeComments": false,
-    "jsx": "preserve"
-  }
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "skipLibCheck": true
+  },
+  "exclude": ["dist", "node_modules"]
 }

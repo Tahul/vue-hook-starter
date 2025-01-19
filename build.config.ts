@@ -1,13 +1,30 @@
-import { copySync } from 'fs-extra'
-import consola from 'consola'
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
-  declaration: true,
   rollup: {
-    emitCJS: true
+    emitCJS: true,
   },
-  externals: ['@nuxt/schema', '@nuxt/schema-edge', '@nuxt/kit', '@nuxt/kit-edge', 'nuxt', 'nuxt-edge', 'nuxt3', 'vue'],
+  declaration: true,
+  // warnings triggered by nuxt exports not being built - happens in separate script
+  failOnWarn: false,
+  // TODO: check if all are needed
+  externals: [
+    '@nuxt/kit',
+    '@nuxt/schema',
+    'nuxt3',
+    'nuxt',
+    'vue',
+    'defu',
+    '@vueuse/motion',
+    'csstype',
+    '@vueuse/shared',
+    'framesync',
+    'style-value-types',
+    '@vue/compiler-core',
+    '@babel/parser',
+    '@vue/shared',
+    '@vueuse/core',
+  ],
   entries: [
     // Plugin
     {
@@ -15,37 +32,14 @@ export default defineBuildConfig({
       outDir: 'dist',
       name: 'index',
       format: 'esm',
-      ext: 'mjs'
+      ext: 'mjs',
     },
     {
       input: 'src/index.ts',
       outDir: 'dist',
       name: 'index',
       format: 'cjs',
-      ext: 'cjs'
+      ext: 'cjs',
     },
-    // Nuxt
-    {
-      input: 'src/nuxt/module.ts',
-      outDir: 'dist',
-      name: 'nuxt',
-      format: 'esm',
-      ext: 'mjs'
-    },
-    {
-      input: 'src/nuxt/module.ts',
-      outDir: 'dist',
-      name: 'nuxt',
-      format: 'cjs',
-      ext: 'cjs'
-    }
   ],
-  hooks: {
-    'build:done': () => {
-      copySync('src/nuxt/runtime', 'dist/runtime')
-
-      // eslint-disable-next-line no-console
-      consola.info('Nuxt runtime copied to `dist/`!')
-    }
-  }
 })

@@ -1,78 +1,94 @@
 {
   "name": "vue-composable-starter",
-  "version": "1.0.0",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.15.3",
   "description": "🪝 Minimalist starting point for your next Vue Composable",
+  "author": "Yaël GUILLOUX <yael.guilloux@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Tahul/vue-composable-starter#readme",
   "repository": "https://github.com/Tahul/vue-composable-starter",
   "bugs": {
     "url": "https://github.com/Tahul/vue-composable-starter/issues"
   },
-  "homepage": "https://github.com/Tahul/vue-composable-starter#readme",
   "keywords": [
     "vue",
     "composable"
   ],
-  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./nuxt": {
+      "import": "./dist/nuxt/module.mjs",
+      "require": "./dist/nuxt/module.cjs"
+    }
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": "./dist/index.mjs",
-    "./nuxt": {
-      "import": "./dist/nuxt.mjs",
-      "require": "./dist/nuxt.cjs"
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
     }
   },
-  "scripts": {
-    "dev": "vitest dev",
-    "dev:demo": "vite",
-    "build": "unbuild",
-    "build:demo": "vite build",
-    "lint": "eslint \"**/*.{vue,ts,js}\"",
-    "lint:fix": "pnpm run lint --write",
-    "test": "pnpm test:types && pnpm test:unit && pnpm test:coverage",
-    "test:types": "tsc --build tsconfig.json",
-    "test:coverage": "vitest run --coverage",
-    "test:unit": "vitest run",
-    "dev:nuxt": "nuxi dev playground",
-    "build:nuxt": "nuxi build playground",
-    "start:nuxt": "nuxi preview playground"
-  },
   "files": [
-    "dist/**/*",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "dist"
   ],
+  "scripts": {
+    "dev": "pnpm dev:vite",
+    "build": "unbuild && pnpm build:nuxt-module",
+    "build:nuxt-module": "nuxt-module-build build ./src/nuxt --outDir ../../dist/nuxt",
+    "prepare": "pnpm prepare:nuxt",
+    "lint": "eslint --flag unstable_ts_config .",
+    "lint:fix": "pnpm run lint --fix",
+    "test:unit": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test": "pnpm test:unit && pnpm test:coverage",
+    "dev:prepare": "nuxt-module-build build --stub ./src/nuxt && nuxt-module-build prepare ./src/nuxt && nuxi prepare ./playgrounds/nuxt",
+    "dev:nuxt": "pnpm --filter playgrounds-nuxt dev",
+    "dev:vite": "pnpm --filter playgrounds-vite dev",
+    "build:nuxt": "nuxi build playgrounds",
+    "start:nuxt": "nuxi preview playgrounds",
+    "prepare:nuxt": "pnpm --filter playgrounds-nuxt prepare:nuxt",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "test:browser": "vitest --workspace=vitest.workspace.js",
+    "prepack": "pnpm build",
+    "release": "pnpm test:unit && pnpm changelogen --release && pnpm publish --access public && git push --follow-tags"
+  },
   "peerDependencies": {
-    "@nuxt/kit": "npm:@nuxt/kit-edge@latest"
+    "vue": ">=3.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.19.2",
-    "@types/fs-extra": "^9.0.13",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@vue/eslint-config-prettier": "^7.0.0",
-    "@vue/test-utils": "^2.0.0-rc.17",
-    "c8": "^7.11.0",
-    "eslint": "^8.12.0",
-    "lint-staged": "^12.3.7",
-    "nuxt3": "latest",
-    "pascalcase": "^2.0.0",
-    "prettier": "^2.6.1",
-    "typescript": "^4.6.3",
-    "unbuild": "^0.7.2",
-    "vitest": "^0.8.2",
-    "yorkie": "^2.0.0"
+    "@antfu/eslint-config": "^3.8.0",
+    "@nuxt/kit": "^3.14.159",
+    "@nuxt/module-builder": "^0.8.4",
+    "@types/node": "^22.10.1",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitest/browser": "^2.1.5",
+    "@vitest/coverage-v8": "^2.1.4",
+    "changelogen": "^0.5.7",
+    "eslint": "^9.14.0",
+    "happy-dom": "^16.0.0",
+    "lint-staged": "^15.2.10",
+    "nuxt": "^3.14.1592",
+    "playwright": "^1.49.0",
+    "typescript": "^5.6.3",
+    "unbuild": "^2.0.0",
+    "vitepress": "^1.5.0",
+    "vitest": "^2.1.5",
+    "vitest-browser-vue": "^0.0.1"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
-  },
-  "author": "Yaël GUILLOUX <yael.guilloux@gmail.com>",
-  "license": "MIT"
+  }
 }
